@@ -110,7 +110,7 @@ jobs:
       - store_test_results:
           path: output/scan
             
-  android-build-and-test:
+  android-build:
     working_directory: ~/demo-react-native/android
     docker:
       - image: circleci/android:api-29-node
@@ -132,22 +132,28 @@ jobs:
             - vendor/bundle
 
       - run:
-          name: fastlane tests
+          name: export DEBUG KEYSTORE path
+          command: echo $ANDROID_DEBUG_KEYSTORE | base64 -di | tee debug.keystore app/debug.keystore >/dev/null
+
+      - run:
+          name: export KEYSTORE path
+          command: echo $ANDROID_MY_UPLOAD_KEYSTORE | base64 -di | tee my-upload-key.keystore app/my-upload-key.keystore >/dev/null
+
+      - run:
+          name: fastlane deploy
           command: |
-            mkdir -p test-results/fastlane
-            bundle exec fastlane test
-            mv fastlane/report.xml test-results/fastlane
-      - store_test_results:
-          path: test-results
+            bundle exec fastlane beta
 
       - store_artifacts:
-          path: test-results
+          path: app/build/outputs/apk/
+          destination: /apk/
+
 
 workflows:
-  node-android-ios:
+  node-android:
     jobs:
       - node
-      - android-build-and-test:
+      - android-build:
           requires:
             - node
             
