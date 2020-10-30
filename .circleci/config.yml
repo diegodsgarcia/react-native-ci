@@ -132,12 +132,8 @@ jobs:
             - vendor/bundle
 
       - run:
-          name: export DEBUG KEYSTORE path
-          command: echo $ANDROID_DEBUG_KEYSTORE | base64 -di | tee debug.keystore app/debug.keystore >/dev/null
-
-      - run:
           name: export KEYSTORE path
-          command: echo $ANDROID_MY_UPLOAD_KEYSTORE | base64 -di | tee my-upload-key.keystore app/my-upload-key.keystore >/dev/null
+          command: echo "$ANDROID_PRODUCTION_KEYSTORE" | base64 -di > app/production.keystore
 
       - run:
           name: fastlane deploy
