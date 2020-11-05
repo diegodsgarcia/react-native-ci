@@ -1,4 +1,4 @@
-package com.reactnativeci.generated;
+package com.diegodsgarcia.reactnativeci.generated;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.reactnativeci;
+package com.diegodsgarcia.reactnativeci;
 
 import android.os.Bundle;
 

@@ -1,9 +1,9 @@
 {
-  "name": "reactNativeCi",
-  "displayName": "reactNativeCi",
+  "name": "ReactNativeCi",
+  "displayName": "ReactNativeCi",
   "expo": {
-    "name": "reactNativeCi",
-    "slug": "reactNativeCi",
+    "name": "ReactNativeCi",
+    "slug": "ReactNativeCi",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
