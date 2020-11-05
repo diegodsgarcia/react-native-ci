@@ -138,12 +138,11 @@ jobs:
       - run:
           name: fastlane deploy
           command: |
-            bundle exec fastlane beta
+            bundle exec fastlane deploy
 
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: /apk/
-
 
 workflows:
   node-android:
